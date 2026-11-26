@@ -7,7 +7,7 @@ The 12-page project4.pdf was read in full before development. Express owns all a
 - [x] Phase 3: authentication, RBAC, ownership
 - [x] Phase 4: commerce lifecycle and transactional stock
 - [x] Phase 5: deterministic Python engines
-- [x] Phase 6: storefront and five role workspaces; final mobile regression under verification
+- [x] Phase 6: responsive storefront, successful mobile overflow regression and five role workspaces
 - [x] Phase 7: MinIO/Mailpit integrations and explicitly labeled local payment/shipping providers
 - [x] Phase 8: 30 Node/API/UI tests, 13 Python tests, real PostgreSQL capstone and incident evidence
 - [x] Phase 9: full Compose build/start, GitHub repository/CI configuration and isolated backup restoration

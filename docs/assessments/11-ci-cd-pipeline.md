@@ -2,7 +2,7 @@
 
 **Status:** Implemented but not externally verified
 
-Quality/security/container CI, immutable registry release, manual staging/production dispatch and rollback tag. External registry/deployment-hook execution requires owner configuration.
+Quality/security/container CI is recorded separately from release deployment. Registry release, staging/production approval and rollback are configured but require genuine owner-controlled execution.
 
 ## Implementation
 

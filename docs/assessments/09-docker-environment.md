@@ -1,6 +1,6 @@
 # Assessment 09 — Docker environment
 
-**Status:** Implemented and verified
+**Status:** Partial or simulated
 
 Frontend, API, FastAPI, PostgreSQL, Redis, worker, migration job, MinIO and Mailpit. Alternate verification ports permit coexistence with native development.
 

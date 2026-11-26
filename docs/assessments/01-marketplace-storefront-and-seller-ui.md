@@ -1,6 +1,6 @@
 # Assessment 01 — Marketplace storefront and seller UI
 
-**Status:** Partial or simulated
+**Status:** Implemented and verified
 
 Responsive storefront, search/filter, SKU selection, cart, sandbox checkout, order tracking and five role workspaces. External Stripe Elements checkout UI is outside verified local scope.
 

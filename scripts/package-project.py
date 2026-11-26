@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+from io import BytesIO
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -34,4 +35,8 @@ with ZipFile(archive) as output:
     assert output.testzip() is None
     assert set(required).issubset(set(output.namelist()))
     assert not any("node_modules/" in n or "/.venv/" in n or n == ".env" or n == ".env.test" for n in output.namelist())
+    from pypdf import PdfReader
+    assert len(PdfReader(BytesIO(output.read("docs/MarketSphere_Project_Documentation.pdf"))).pages) == 15
+    packaged_manifest = json.loads(output.read("docs/evidence/package-manifest.json"))
+    assert all(hashlib.sha256(output.read(record["path"])).hexdigest() == record["sha256"] for record in packaged_manifest["files"])
 print(json.dumps({"archive": str(archive), "bytes": archive.stat().st_size, "entries": len(files), "crc_check": "passed", "required_files": "present", "secret_exclusions": "passed"}, indent=2))

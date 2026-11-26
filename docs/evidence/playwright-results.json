@@ -118,7 +118,7 @@
       "specs": [
         {
           "title": "desktop discovery, filtering, detail and responsive storefront",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -131,58 +131,18 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "failed",
-                  "duration": 9655,
-                  "error": {
-                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:47:5",
-                    "location": {
-                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
-                      "column": 5,
-                      "line": 47
-                    },
-                    "snippet": " \u001b[90m 45 |\u001b[39m       () \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mdocumentElement\u001b[33m.\u001b[39mscrollWidth \u001b[33m<=\u001b[39m innerWidth\u001b[33m,\u001b[39m\n \u001b[90m 46 |\u001b[39m     )\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({\n \u001b[90m 49 |\u001b[39m     path\u001b[33m:\u001b[39m \u001b[32m\"docs/evidence/screenshots/storefront-mobile.png\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 50 |\u001b[39m     fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
-                        "column": 5,
-                        "line": 47
-                      },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  45 |       () => document.documentElement.scrollWidth <= innerWidth,\n  46 |     ),\n> 47 |   ).toBe(true);\n     |     ^\n  48 |   await page.screenshot({\n  49 |     path: \"docs/evidence/screenshots/storefront-mobile.png\",\n  50 |     fullPage: true,\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:47:5"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 9772,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:21.420Z",
+                  "startTime": "2026-11-26T08:40:44.860Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\trace.zip"
-                    }
-                  ],
-                  "errorLocation": {
-                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
-                    "column": 5,
-                    "line": 47
-                  }
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "170e8a9d719db4caeb1d-c05c17c9c9c40ea1976d",
@@ -203,15 +163,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9172,
+                  "duration": 10075,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:34.663Z",
+                  "startTime": "2026-11-26T08:40:55.886Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -237,15 +197,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5712,
+                  "duration": 5852,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:44.363Z",
+                  "startTime": "2026-11-26T08:41:06.006Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -271,15 +231,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 6292,
+                  "duration": 2996,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:50.104Z",
+                  "startTime": "2026-11-26T08:41:11.882Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -305,15 +265,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3333,
+                  "duration": 3254,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:56.414Z",
+                  "startTime": "2026-11-26T08:41:14.906Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -339,15 +299,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3289,
+                  "duration": 3172,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:36:59.778Z",
+                  "startTime": "2026-11-26T08:41:18.187Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -365,11 +325,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-26T08:36:19.830Z",
-    "duration": 46675.674,
-    "expected": 5,
+    "startTime": "2026-11-26T08:40:42.216Z",
+    "duration": 43367.235,
+    "expected": 6,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

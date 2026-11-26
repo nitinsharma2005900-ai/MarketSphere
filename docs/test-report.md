@@ -1,12 +1,12 @@
 # Actual test execution report
 
-Generated 26 November 2026, 14:08 IST from retained machine-readable reports.
+Generated 26 November 2026, 14:13 IST from retained machine-readable reports.
 
 | Suite | Actual result | Evidence |
 |---|---|---|
 | Vitest / Supertest / React Testing Library | 30 passed; 0 failed | evidence/vitest-results.json and XML |
 | Pytest / HTTPX | 13 tests; 0 failures/errors | evidence/python-results.xml |
-| Playwright Chromium | 5 passed; 1 unexpected failures | evidence/playwright-results.json; screenshots/ |
+| Playwright Chromium | 6 passed; 0 unexpected failures | evidence/playwright-results.json; screenshots/ |
 | Selected JS statement coverage | 70.23% | evidence/coverage/coverage-summary.json |
 | Selected JS line coverage | 71.39% | evidence/coverage/coverage-summary.json |
 | Python line coverage | 95.38% | evidence/python-coverage.json |

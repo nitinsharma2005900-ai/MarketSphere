@@ -1,6 +1,6 @@
 # Assessment 12 — Commerce test suite
 
-**Status:** Partial or simulated
+**Status:** Implemented and verified
 
 Success, authorization, invalid input, concurrency, expiry, duplicate events/refunds, failed shipping recovery and provider-local integration tests. Coverage is reported as measured, not complete.
 
