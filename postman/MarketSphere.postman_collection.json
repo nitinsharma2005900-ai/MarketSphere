@@ -1,0 +1,1591 @@
+{
+  "info": {
+    "name": "MarketSphere",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4040"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "List categories",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/categories"
+      }
+    },
+    {
+      "name": "Search approved products with pagination and category, seller, price and sort filters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/products"
+      }
+    },
+    {
+      "name": "Get an approved product, variants, stock and reviews",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/products/:id"
+      }
+    },
+    {
+      "name": "Record a browsing event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/events",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"{{productId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Explainable recommendations: popular, recent, related, category, frequent, personalized",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/recommendations"
+      }
+    },
+    {
+      "name": "Get own cart",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/cart"
+      }
+    },
+    {
+      "name": "Add or replace a cart line; this does not reserve stock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/cart/items",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"variantId\": \"{{variantId}}\",\n  \"quantity\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Remove own cart line",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/cart/items/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List own addresses",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/addresses"
+      }
+    },
+    {
+      "name": "Save a delivery address",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/addresses",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Synthetic example\",\n  \"line1\": \"replace-with-line1\",\n  \"city\": \"replace-with-city\",\n  \"region\": \"replace-with-region\",\n  \"postalCode\": \"replace-with-postalCode\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Remove own address",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/addresses/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update own profile",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/profile",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Synthetic example\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Reserve stock transactionally. Requires Idempotency-Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/checkout",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"addressId\": \"{{addressId}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List orders scoped to role and ownership",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders"
+      }
+    },
+    {
+      "name": "Get private order details",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id"
+      }
+    },
+    {
+      "name": "Cancel an unpaid checkout and release reservations",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id/cancel",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create an idempotent local or Stripe test payment intent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id/payment-intent",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Simulate a payment locally; disabled in production",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id/sandbox-pay",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Prepare a partial shipment; requires Idempotency-Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id/shipments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"warehouseId\": \"{{warehouseId}}\",\n  \"items\": [\n    {\n      \"orderItemId\": \"{{orderItemId}}\",\n      \"quantity\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Advance local shipping simulator",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/shipments/:id/simulate",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"SHIPPED\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Request a bounded return after delivery",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/orders/:id/returns",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"replace-with-reason\",\n  \"items\": [\n    {\n      \"orderItemId\": \"{{orderItemId}}\",\n      \"quantity\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List returns scoped to customer, seller or operator",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/returns"
+      }
+    },
+    {
+      "name": "Accept and restock or reject a return",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/returns/:id/receive",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"accept\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create and process an idempotent refund",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/returns/:id/refund",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Review a delivered purchase once",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/products/:id/reviews",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rating\": 1,\n  \"comment\": \"replace-with-comment\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List own seller catalog",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/products"
+      }
+    },
+    {
+      "name": "Create a product for moderation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/products",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Synthetic example\",\n  \"description\": \"A synthetic product description for local testing.\",\n  \"categoryId\": \"{{categoryId}}\",\n  \"image\": \"replace-with-image\",\n  \"variants\": [\n    {\n      \"sku\": \"replace-with-sku\",\n      \"name\": \"Synthetic example\",\n      \"price\": 1\n    }\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Edit own catalog product and resubmit moderation",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/products/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update own SKU price",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/variants/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"price\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Add a SKU to own product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/products/:id/variants",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sku\": \"replace-with-sku\",\n  \"name\": \"Synthetic example\",\n  \"price\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Validate CSV in Python and atomically apply own price feed",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/import",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"csv\": \"replace-with-csv\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Validate and atomically import a synthetic product CSV",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/seller/catalog-import",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"csv\": \"replace-with-csv\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Upload a PNG, JPEG or WebP image (5 MB maximum); MIME and magic bytes verified",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/uploads",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List warehouses",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/warehouses"
+      }
+    },
+    {
+      "name": "List SKUs available for inventory receipt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/inventory/skus"
+      }
+    },
+    {
+      "name": "List stock and immutable movements scoped to role",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/inventory"
+      }
+    },
+    {
+      "name": "Receive or reconcile inventory with an immutable ledger entry. Requires Idempotency-Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/inventory/adjust",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"variantId\": \"{{variantId}}\",\n  \"warehouseId\": \"{{warehouseId}}\",\n  \"delta\": -100000,\n  \"reason\": \"replace-with-reason\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List own tickets or support queue",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/tickets"
+      }
+    },
+    {
+      "name": "Create a customer support ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/tickets",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"subject\": \"replace-with-subject\",\n  \"message\": \"replace-with-message\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Add a resolution message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/tickets/:id/messages",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"replace-with-text\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Assign a ticket or update status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/tickets/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Escalate own ticket to a dispute",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/tickets/:id/dispute",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List disputes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/disputes"
+      }
+    },
+    {
+      "name": "Resolve a dispute with an audit trail",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/disputes/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resolution\": \"replace-with-resolution\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List own or marketplace settlement records",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/settlements"
+      }
+    },
+    {
+      "name": "Read effective refund and commission reversals",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/financial-movements"
+      }
+    },
+    {
+      "name": "Record a simulated seller settlement. Requires Idempotency-Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/sellers/:id/settle",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List sellers and approval status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/sellers"
+      }
+    },
+    {
+      "name": "Approve or suspend seller and configure commission",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/sellers/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List users without authentication secrets",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/users"
+      }
+    },
+    {
+      "name": "Activate or suspend a user",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/users/:id",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"active\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Approve, reject or archive a catalog product",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/products/:id/moderate",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"ACTIVE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create category",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/categories",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Synthetic example\",\n  \"slug\": \"replace-with-slug\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List active promotions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/promotions"
+      }
+    },
+    {
+      "name": "Create a single-use-per-customer promotion",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/promotions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"code\": \"replace-with-code\",\n  \"discountBps\": 1,\n  \"minSubtotal\": 0,\n  \"maxDiscount\": 1,\n  \"endsAt\": \"2030-12-31T00:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Read security and business audit trail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/audit"
+      }
+    },
+    {
+      "name": "Database-backed role metrics and recent activity",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/dashboard"
+      }
+    },
+    {
+      "name": "Dependency, outbox and background job monitoring",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/health"
+      }
+    },
+    {
+      "name": "Retry a failed idempotent background job",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/admin/jobs/:id/retry",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Register a customer or pending seller",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Synthetic example\",\n  \"email\": \"customer@marketsphere.test\",\n  \"password\": \"MarketSphere!2026\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Sign in; access token in body, refresh token in HttpOnly cookie",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"customer@marketsphere.test\",\n  \"password\": \"MarketSphere!2026\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) pm.collectionVariables.set('accessToken', pm.response.json().data.accessToken);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rotate refresh cookie; trusted Origin header required",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/refresh",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Revoke refresh sessions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/logout",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Current user profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/auth/me"
+      }
+    },
+    {
+      "name": "Signed local payments callback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/webhooks/payments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"replace-with-id\",\n  \"providerRef\": \"replace-with-providerRef\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Signed local shipping callback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/webhooks/shipping",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"replace-with-id\",\n  \"providerRef\": \"replace-with-providerRef\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Signed local refunds callback",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/webhooks/refunds",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"replace-with-id\",\n  \"providerRef\": \"replace-with-providerRef\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Stripe test-mode webhook",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "postman-{{$guid}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/webhooks/stripe",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

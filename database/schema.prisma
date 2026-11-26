@@ -54,6 +54,7 @@ model Seller {
   products Product[]
   items OrderItem[]
   settlements Settlement[]
+  financialMovements FinancialMovement[]
 }
 model Category {
   id String @id @default(uuid())
@@ -195,6 +196,7 @@ model OrderItem {
   shipmentItems ShipmentItem[]
   returnItems ReturnItem[]
   settlementItem SettlementItem?
+  financialMovements FinancialMovement[]
   @@index([sellerId])
 }
 model Reservation {
@@ -307,6 +309,22 @@ model Refund {
   status String @default("PENDING")
   createdAt DateTime @default(now())
   events RefundEvent[]
+  financialMovements FinancialMovement[]
+}
+model FinancialMovement {
+  id String @id @default(uuid())
+  sellerId String
+  seller Seller @relation(fields:[sellerId],references:[id])
+  orderItemId String
+  orderItem OrderItem @relation(fields:[orderItemId],references:[id])
+  refundId String
+  refund Refund @relation(fields:[refundId],references:[id])
+  amount Int
+  commission Int
+  kind String @default("REFUND_REVERSAL")
+  createdAt DateTime @default(now())
+  @@unique([refundId,orderItemId])
+  @@index([sellerId,createdAt])
 }
 model RefundEvent {
   id String @id

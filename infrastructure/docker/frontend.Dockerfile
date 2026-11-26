@@ -6,7 +6,9 @@ COPY apps/frontend/package.json apps/frontend/package.json
 RUN npm ci
 COPY apps/frontend ./apps/frontend
 ARG NEXT_PUBLIC_API_URL=http://localhost:4040/api/v1
+ARG NEXT_PUBLIC_DEMO_MODE=false
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_DEMO_MODE=$NEXT_PUBLIC_DEMO_MODE
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build -w apps/frontend
 FROM node:22-bookworm-slim

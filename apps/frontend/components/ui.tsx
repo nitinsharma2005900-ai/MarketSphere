@@ -1,15 +1,180 @@
-'use client';
-import {LoaderCircle,PackageOpen,X,Check,AlertCircle} from 'lucide-react';
-import {useEffect} from 'react';
-export const money=(amount:number)=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format((amount??0)/100);
-export const date=(value:string)=>new Date(value).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-export function Badge({children}:{children:React.ReactNode}){const s=String(children);return <span className={'badge '+(/PAID|ACTIVE|APPROVED|DELIVERED|SUCCEEDED|REFUNDED|RESOLVED|RECEIVED/.test(s)?'green':/FAILED|REJECTED|SUSPENDED|EXPIRED/.test(s)?'red':'')}>{s.replaceAll('_',' ').toLowerCase()}</span>;}
-export function Loading(){return <div className="loading" role="status"><LoaderCircle className="spin"/> Loading your workspace…</div>;}
-export function ErrorState({error,retry}:{error:Error|null;retry?:()=>void}){return <div className="empty error" role="alert"><AlertCircle/><h3>We couldn’t load this</h3><p>{error?.message??'Please try again in a moment.'}</p>{retry&&<button className="button secondary" onClick={retry}>Try again</button>}</div>;}
-export function Empty({title='Nothing here yet',text='New activity will appear here.',children}:{title?:string;text?:string;children?:React.ReactNode}){return <div className="empty"><PackageOpen size={38}/><h3>{title}</h3><p>{text}</p>{children}</div>;}
-export function Modal({title,close,children}:{title:string;close:()=>void;children:React.ReactNode}){
-  useEffect(()=>{const old=document.activeElement as HTMLElement;const node=document.querySelector<HTMLElement>('[role="dialog"]');node?.focus();const key=(e:KeyboardEvent)=>{if(e.key==='Escape')close();if(e.key==='Tab'&&node){const controls=[...node.querySelectorAll<HTMLElement>('button,a,input,select,textarea')].filter(el=>!el.hasAttribute('disabled'));const first=controls[0],last=controls.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}};document.addEventListener('keydown',key);const overflow=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.removeEventListener('keydown',key);document.body.style.overflow=overflow;old?.focus();};},[close]);
-  return <div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)close();}}><section className="modal" role="dialog" aria-modal="true" aria-label={title} tabIndex={-1}><header><h2>{title}</h2><button className="icon-button" aria-label="Close dialog" onClick={close}><X/></button></header>{children}</section></div>;
+"use client";
+import { LoaderCircle, PackageOpen, X, Check, AlertCircle } from "lucide-react";
+import { useEffect } from "react";
+export const money = (amount: number) =>
+  new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 2,
+  }).format((amount ?? 0) / 100);
+export const date = (value: string) =>
+  new Date(value).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+export function Badge({ children }: { children: React.ReactNode }) {
+  const s = String(children);
+  return (
+    <span
+      className={
+        "badge " +
+        (/PAID|ACTIVE|APPROVED|DELIVERED|SUCCEEDED|REFUNDED|RESOLVED|RECEIVED/.test(
+          s,
+        )
+          ? "green"
+          : /FAILED|REJECTED|SUSPENDED|EXPIRED/.test(s)
+            ? "red"
+            : "")
+      }
+    >
+      {s.replaceAll("_", " ").toLowerCase()}
+    </span>
+  );
 }
-export function Field({label,children}:{label:string;children:React.ReactNode}){return <label className="field"><span>{label}</span>{children}</label>;}
-export function StatusSteps({status}:{status:string}){const steps=['PENDING_PAYMENT','PAID','FULFILLED','DELIVERED'];const i=status==='PARTIALLY_FULFILLED'?1:steps.indexOf(status);return <div className="steps">{steps.map((s,n)=><div className={n<=i?'done':''} key={s}><span>{n<=i?<Check size={14}/>:n+1}</span>{s.replace('PENDING_PAYMENT','Reserved').replaceAll('_',' ').toLowerCase()}</div>)}</div>;}
+export function Loading() {
+  return (
+    <div className="loading" role="status">
+      <LoaderCircle className="spin" /> Loading your workspace…
+    </div>
+  );
+}
+export function ErrorState({
+  error,
+  retry,
+}: {
+  error: Error | null;
+  retry?: () => void;
+}) {
+  return (
+    <div className="empty error" role="alert">
+      <AlertCircle />
+      <h3>We couldn’t load this</h3>
+      <p>{error?.message ?? "Please try again in a moment."}</p>
+      {retry && (
+        <button className="button secondary" onClick={retry}>
+          Try again
+        </button>
+      )}
+    </div>
+  );
+}
+export function Empty({
+  title = "Nothing here yet",
+  text = "New activity will appear here.",
+  children,
+}: {
+  title?: string;
+  text?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="empty">
+      <PackageOpen size={38} />
+      <h3>{title}</h3>
+      <p>{text}</p>
+      {children}
+    </div>
+  );
+}
+export function Modal({
+  title,
+  close,
+  children,
+}: {
+  title: string;
+  close: () => void;
+  children: React.ReactNode;
+}) {
+  useEffect(() => {
+    const old = document.activeElement as HTMLElement;
+    const node = document.querySelector<HTMLElement>('[role="dialog"]');
+    node?.focus();
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "Tab" && node) {
+        const controls = [
+          ...node.querySelectorAll<HTMLElement>(
+            "button,a,input,select,textarea",
+          ),
+        ].filter((el) => !el.hasAttribute("disabled"));
+        const first = controls[0],
+          last = controls.at(-1);
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", key);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", key);
+      document.body.style.overflow = overflow;
+      old?.focus();
+    };
+  }, [close]);
+  return (
+    <div
+      className="modal-backdrop"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) close();
+      }}
+    >
+      <section
+        className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={title}
+        tabIndex={-1}
+      >
+        <header>
+          <h2>{title}</h2>
+          <button
+            className="icon-button"
+            aria-label="Close dialog"
+            onClick={close}
+          >
+            <X />
+          </button>
+        </header>
+        {children}
+      </section>
+    </div>
+  );
+}
+export function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="field">
+      <span>{label}</span>
+      {children}
+    </label>
+  );
+}
+export function StatusSteps({ status }: { status: string }) {
+  const steps = ["PENDING_PAYMENT", "PAID", "FULFILLED", "DELIVERED"];
+  const i = status === "PARTIALLY_FULFILLED" ? 1 : steps.indexOf(status);
+  return (
+    <div className="steps">
+      {steps.map((s, n) => (
+        <div className={n <= i ? "done" : ""} key={s}>
+          <span>{n <= i ? <Check size={14} /> : n + 1}</span>
+          {s
+            .replace("PENDING_PAYMENT", "Reserved")
+            .replaceAll("_", " ")
+            .toLowerCase()}
+        </div>
+      ))}
+    </div>
+  );
+}

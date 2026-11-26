@@ -42,6 +42,8 @@ jobs:
       - run: uv run --directory services/python-service ruff check . && uv run --directory services/python-service pytest --cov=main --cov-report=json:../../docs/evidence/python-coverage.json --junitxml=../../docs/evidence/python-results.xml
       - run: npm test
       - run: npm audit --audit-level=moderate
+      - run: uv export --project services/python-service --no-dev --no-hashes --format requirements-txt --output-file /tmp/marketsphere-requirements.txt
+      - run: uvx pip-audit -r /tmp/marketsphere-requirements.txt -f json -o docs/evidence/python-audit.json
       - run: npm run build
       - run: npm run db:seed
       - run: npm run dev:api > /tmp/api.log 2>&1 &

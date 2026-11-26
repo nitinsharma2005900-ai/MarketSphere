@@ -1,0 +1,6 @@
+{
+  "quotes": 1000,
+  "lines_per_quote": 50,
+  "elapsed_seconds": 0.26966629998059943,
+  "correctness": "1000 exact expected totals"
+}

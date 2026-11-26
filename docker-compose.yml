@@ -59,9 +59,13 @@ services:
     env_file: .env
     environment:
       DATABASE_URL: postgresql://marketsphere:${POSTGRES_PASSWORD}@postgres:5432/marketsphere
+      REDIS_URL: redis://redis:6379
+      PYTHON_SERVICE_URL: http://python:8040
     command: [sh, -c, "npx prisma migrate deploy --schema database/schema.prisma && npx tsx database/seed.ts"]
     depends_on:
       postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      python: {condition: service_healthy}
     profiles: [app]
   api:
     build:

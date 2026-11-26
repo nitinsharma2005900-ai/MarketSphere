@@ -1,1 +1,31 @@
-{"name":"@marketsphere/frontend","version":"1.0.0","private":true,"scripts":{"dev":"next dev -p 3040","start":"next start -p 3040","build":"next build","typecheck":"tsc --noEmit"},"dependencies":{"next":"16.4.6","react":"^19.2.0","react-dom":"^19.2.0","tailwindcss":"^4.1.0","@tailwindcss/postcss":"^4.1.0","@tanstack/react-query":"^5.90.0","react-hook-form":"^7.63.0","@hookform/resolvers":"^5.2.0","zod":"^4.1.0","recharts":"^3.2.0","lucide-react":"^0.468.0","framer-motion":"^12.23.0","sonner":"^2.0.7"},"devDependencies":{"@types/react":"^19.2.0","@types/react-dom":"^19.2.0","@types/node":"^22.18.0"}}
+{
+  "name": "@marketsphere/frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3040",
+    "start": "next start -p 3040",
+    "build": "next build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@tanstack/react-query": "^5.90.0",
+    "react-hook-form": "^7.63.0",
+    "@hookform/resolvers": "^5.2.0",
+    "zod": "^4.1.0",
+    "recharts": "^3.2.0",
+    "lucide-react": "^0.468.0",
+    "framer-motion": "^12.23.0",
+    "sonner": "^2.0.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/node": "^22.18.0"
+  }
+}

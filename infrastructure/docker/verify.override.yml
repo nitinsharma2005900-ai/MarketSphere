@@ -1,0 +1,13 @@
+# Runs the containerized application alongside native local development for smoke verification.
+services:
+  python:
+    ports: !override ["127.0.0.1:8050:8040"]
+  api:
+    ports: !override ["127.0.0.1:4050:4040"]
+    environment:
+      FRONTEND_URL: http://localhost:3050
+  frontend:
+    ports: !override ["127.0.0.1:3050:3040"]
+    build:
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:4050/api/v1

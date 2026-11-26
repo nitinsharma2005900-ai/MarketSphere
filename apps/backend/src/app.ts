@@ -1,34 +1,215 @@
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-import { rateLimit } from 'express-rate-limit';
-import swagger from 'swagger-ui-express';
-import {z} from 'zod';
-import {config} from './config.js';
-import {db,redis,logger} from './repository.js';
-import {requestContext,errorHandler,assert} from './http.js';
-import {auth} from './auth.js';
-import {api} from './routes.js';
-import {openapi} from './openapi.js';
-import {verify,stripe} from './providers.js';
-import {paymentEvent,shippingEvent,refundEvent} from './commerce.js';
-export const app=express();
-app.disable('x-powered-by');app.set('trust proxy',config.NODE_ENV==='production'?1:false);
-app.use(requestContext,helmet(),cors({origin:config.FRONTEND_URL,credentials:true,exposedHeaders:['X-Request-ID']}));
-let requests=0,errors=0;
-app.use((req,res,next)=>{requests++;const start=Date.now();res.on('finish',()=>{if(res.statusCode>=500)errors++;logger.info({requestId:req.requestId,method:req.method,path:req.path,status:res.statusCode,durationMs:Date.now()-start},'HTTP request');});next();});
-app.use(rateLimit({windowMs:60000,limit:1000,standardHeaders:'draft-8',legacyHeaders:false}));
-const paymentSchema=z.object({id:z.string().min(1).max(200),providerRef:z.string().min(1).max(200),type:z.enum(['SUCCEEDED','FAILED']),amount:z.number().int().min(0)});
-const shippingSchema=z.object({id:z.string().min(1).max(200),providerRef:z.string().min(1).max(200),status:z.enum(['SHIPPED','DELIVERED','FAILED'])});
-app.post('/api/v1/webhooks/payments',express.raw({type:'application/json',limit:'1mb'}),async(req,res)=>{assert(config.PAYMENT_PROVIDER==='local',404,'NOT_FOUND','Local callback disabled');verify(req.body,req.get('X-Webhook-Signature'),config.PAYMENT_WEBHOOK_SECRET);res.json({data:await paymentEvent(paymentSchema.parse(JSON.parse(req.body.toString()))) });});
-app.post('/api/v1/webhooks/refunds',express.raw({type:'application/json',limit:'1mb'}),async(req,res)=>{assert(config.PAYMENT_PROVIDER==='local',404,'NOT_FOUND','Local callback disabled');verify(req.body,req.get('X-Webhook-Signature'),config.PAYMENT_WEBHOOK_SECRET);const e=z.object({id:z.string().min(1).max(200),providerRef:z.string().min(1).max(200)}).parse(JSON.parse(req.body.toString()));res.json({data:await refundEvent(e.id,e.providerRef)});});
-app.post('/api/v1/webhooks/shipping',express.raw({type:'application/json',limit:'1mb'}),async(req,res)=>{verify(req.body,req.get('X-Webhook-Signature'),config.SHIPPING_WEBHOOK_SECRET);res.json({data:await shippingEvent(shippingSchema.parse(JSON.parse(req.body.toString())))});});
-app.post('/api/v1/webhooks/stripe',express.raw({type:'application/json',limit:'1mb'}),async(req,res)=>{assert(config.PAYMENT_PROVIDER==='stripe',404,'NOT_FOUND','Stripe adapter disabled');let event;try{event=stripe().webhooks.constructEvent(req.body,req.get('stripe-signature')??'',process.env.STRIPE_WEBHOOK_SECRET??'');}catch{assert(false,401,'INVALID_SIGNATURE','Invalid Stripe webhook signature');}const obj=event.data.object as any;if(['payment_intent.succeeded','payment_intent.payment_failed'].includes(event.type))res.json({data:await paymentEvent({id:event.id,providerRef:obj.id,type:event.type.endsWith('succeeded')?'SUCCEEDED':'FAILED',amount:obj.amount})});else if(event.type==='refund.updated'&&obj.status==='succeeded')res.json({data:await refundEvent(event.id,obj.id)});else res.json({data:{ignored:true}});});
-app.use(express.json({limit:'2mb'}));
-app.use((req,_res,next)=>{if(['POST','PATCH','DELETE','PUT'].includes(req.method)&&req.headers.origin&&req.headers.origin!==config.FRONTEND_URL)return next(Object.assign(new Error('Untrusted origin'),{status:403}));next();});
-app.get('/health',(_req,res)=>res.json({status:'ok',service:'marketsphere-api'}));
-app.get('/ready',async(_req,res)=>{try{await db.$queryRaw`SELECT 1`;await redis.ping();const p=await fetch(config.PYTHON_SERVICE_URL+'/health',{signal:AbortSignal.timeout(3000)});assert(p.ok,503,'NOT_READY','Processing service unavailable');res.json({status:'ready',database:'ok',redis:'ok',python:'ok',worker:await redis.get('worker:heartbeat')?'ok':'not-running'});}catch{res.status(503).json({status:'not-ready'});}});
-app.get('/metrics',(_req,res)=>res.type('text/plain').send(`marketsphere_http_requests_total ${requests}\nmarketsphere_http_errors_total ${errors}\nmarketsphere_process_uptime_seconds ${Math.floor(process.uptime())}\n`));
-app.get('/api/openapi.json',(_req,res)=>res.json(openapi()));
-app.use('/api-docs',swagger.serve,swagger.setup(openapi()));
-app.use('/api/v1/auth',auth);app.use('/api/v1',api);app.use(errorHandler);
+import express from "express";
+import helmet from "helmet";
+import cors from "cors";
+import { rateLimit } from "express-rate-limit";
+import swagger from "swagger-ui-express";
+import { z } from "zod";
+import { config } from "./config.js";
+import { db, redis, logger } from "./repository.js";
+import { requestContext, errorHandler, assert } from "./http.js";
+import { auth } from "./auth.js";
+import { api } from "./routes.js";
+import { openapi } from "./openapi.js";
+import { verify, stripe } from "./providers.js";
+import { paymentEvent, shippingEvent, refundEvent } from "./commerce.js";
+export const app = express();
+app.disable("x-powered-by");
+app.set("trust proxy", config.NODE_ENV === "production" ? 1 : false);
+app.use(
+  requestContext,
+  helmet(),
+  cors({
+    origin: config.FRONTEND_URL,
+    credentials: true,
+    exposedHeaders: ["X-Request-ID"],
+  }),
+);
+let requests = 0,
+  errors = 0;
+app.use((req, res, next) => {
+  requests++;
+  const start = Date.now();
+  res.on("finish", () => {
+    if (res.statusCode >= 500) errors++;
+    logger.info(
+      {
+        requestId: req.requestId,
+        method: req.method,
+        path: req.path,
+        status: res.statusCode,
+        durationMs: Date.now() - start,
+      },
+      "HTTP request",
+    );
+  });
+  next();
+});
+app.use(
+  rateLimit({
+    windowMs: 60000,
+    limit: 1000,
+    standardHeaders: "draft-8",
+    legacyHeaders: false,
+  }),
+);
+const paymentSchema = z.object({
+  id: z.string().min(1).max(200),
+  providerRef: z.string().min(1).max(200),
+  type: z.enum(["SUCCEEDED", "FAILED"]),
+  amount: z.number().int().min(0),
+});
+const shippingSchema = z.object({
+  id: z.string().min(1).max(200),
+  providerRef: z.string().min(1).max(200),
+  status: z.enum(["SHIPPED", "DELIVERED", "FAILED"]),
+});
+app.post(
+  "/api/v1/webhooks/payments",
+  express.raw({ type: "application/json", limit: "1mb" }),
+  async (req, res) => {
+    assert(
+      config.PAYMENT_PROVIDER === "local",
+      404,
+      "NOT_FOUND",
+      "Local callback disabled",
+    );
+    verify(
+      req.body,
+      req.get("X-Webhook-Signature"),
+      config.PAYMENT_WEBHOOK_SECRET,
+    );
+    res.json({
+      data: await paymentEvent(
+        paymentSchema.parse(JSON.parse(req.body.toString())),
+      ),
+    });
+  },
+);
+app.post(
+  "/api/v1/webhooks/refunds",
+  express.raw({ type: "application/json", limit: "1mb" }),
+  async (req, res) => {
+    assert(
+      config.PAYMENT_PROVIDER === "local",
+      404,
+      "NOT_FOUND",
+      "Local callback disabled",
+    );
+    verify(
+      req.body,
+      req.get("X-Webhook-Signature"),
+      config.PAYMENT_WEBHOOK_SECRET,
+    );
+    const e = z
+      .object({
+        id: z.string().min(1).max(200),
+        providerRef: z.string().min(1).max(200),
+      })
+      .parse(JSON.parse(req.body.toString()));
+    res.json({ data: await refundEvent(e.id, e.providerRef) });
+  },
+);
+app.post(
+  "/api/v1/webhooks/shipping",
+  express.raw({ type: "application/json", limit: "1mb" }),
+  async (req, res) => {
+    verify(
+      req.body,
+      req.get("X-Webhook-Signature"),
+      config.SHIPPING_WEBHOOK_SECRET,
+    );
+    res.json({
+      data: await shippingEvent(
+        shippingSchema.parse(JSON.parse(req.body.toString())),
+      ),
+    });
+  },
+);
+app.post(
+  "/api/v1/webhooks/stripe",
+  express.raw({ type: "application/json", limit: "1mb" }),
+  async (req, res) => {
+    assert(
+      config.PAYMENT_PROVIDER === "stripe",
+      404,
+      "NOT_FOUND",
+      "Stripe adapter disabled",
+    );
+    let event;
+    try {
+      event = stripe().webhooks.constructEvent(
+        req.body,
+        req.get("stripe-signature") ?? "",
+        process.env.STRIPE_WEBHOOK_SECRET ?? "",
+      );
+    } catch {
+      assert(
+        false,
+        401,
+        "INVALID_SIGNATURE",
+        "Invalid Stripe webhook signature",
+      );
+    }
+    const obj = event.data.object as any;
+    if (
+      ["payment_intent.succeeded", "payment_intent.payment_failed"].includes(
+        event.type,
+      )
+    )
+      res.json({
+        data: await paymentEvent({
+          id: event.id,
+          providerRef: obj.id,
+          type: event.type.endsWith("succeeded") ? "SUCCEEDED" : "FAILED",
+          amount: obj.amount,
+        }),
+      });
+    else if (event.type === "refund.updated" && obj.status === "succeeded")
+      res.json({ data: await refundEvent(event.id, obj.id) });
+    else res.json({ data: { ignored: true } });
+  },
+);
+app.use(express.json({ limit: "2mb" }));
+app.use((req, _res, next) => {
+  if (
+    ["POST", "PATCH", "DELETE", "PUT"].includes(req.method) &&
+    req.headers.origin &&
+    req.headers.origin !== config.FRONTEND_URL
+  )
+    return next(Object.assign(new Error("Untrusted origin"), { status: 403 }));
+  next();
+});
+app.get("/health", (_req, res) =>
+  res.json({ status: "ok", service: "marketsphere-api" }),
+);
+app.get("/ready", async (_req, res) => {
+  try {
+    await db.$queryRaw`SELECT 1`;
+    await redis.ping();
+    const p = await fetch(config.PYTHON_SERVICE_URL + "/health", {
+      signal: AbortSignal.timeout(3000),
+    });
+    assert(p.ok, 503, "NOT_READY", "Processing service unavailable");
+    res.json({
+      status: "ready",
+      database: "ok",
+      redis: "ok",
+      python: "ok",
+      worker: (await redis.get("worker:heartbeat")) ? "ok" : "not-running",
+    });
+  } catch {
+    res.status(503).json({ status: "not-ready" });
+  }
+});
+app.get("/metrics", (_req, res) =>
+  res
+    .type("text/plain")
+    .send(
+      `marketsphere_http_requests_total ${requests}\nmarketsphere_http_errors_total ${errors}\nmarketsphere_process_uptime_seconds ${Math.floor(process.uptime())}\n`,
+    ),
+);
+app.get("/api/openapi.json", (_req, res) => res.json(openapi()));
+app.use("/api-docs", swagger.serve, swagger.setup(openapi()));
+app.use("/api/v1/auth", auth);
+app.use("/api/v1", api);
+app.use(errorHandler);

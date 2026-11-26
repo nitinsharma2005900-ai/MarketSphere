@@ -1,0 +1,29 @@
+{
+  "executedAt": "2026-11-26T08:28:11.169Z",
+  "checks": [
+    {
+      "name": "backend-build",
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 38.528
+    },
+    {
+      "name": "frontend-typecheck",
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 15.064
+    },
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 11.035
+    },
+    {
+      "name": "frontend-build",
+      "exitCode": 0,
+      "passed": true,
+      "elapsedSeconds": 77.644
+    }
+  ]
+}

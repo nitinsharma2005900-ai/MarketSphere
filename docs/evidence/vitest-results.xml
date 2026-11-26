@@ -1,59 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="26" failures="0" errors="0" time="18.3712526">
-    <testsuite name="tests/frontend/ui.test.tsx" timestamp="2026-11-26T08:06:36.039Z" hostname="Nitin" tests="3" failures="0" errors="0" skipped="0" time="0.6105004">
-        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; shows an accessible empty state with a useful next action" time="0.3758965">
+<testsuites name="vitest tests" tests="30" failures="0" errors="0" time="16.0574583">
+    <testsuite name="tests/frontend/ui.test.tsx" timestamp="2026-11-26T08:23:37.016Z" hostname="Nitin" tests="3" failures="0" errors="0" skipped="0" time="0.2553396">
+        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; shows an accessible empty state with a useful next action" time="0.1460052">
         </testcase>
-        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; formats minor currency units without changing the authoritative amount" time="0.1947716">
+        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; formats minor currency units without changing the authoritative amount" time="0.0941814">
         </testcase>
-        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; shows meaningful order steps and state text" time="0.0327168">
+        <testcase classname="tests/frontend/ui.test.tsx" name="customer status presentation &gt; shows meaningful order steps and state text" time="0.0113201">
         </testcase>
     </testsuite>
-    <testsuite name="tests/integration/commerce.test.ts" timestamp="2026-11-26T08:06:36.045Z" hostname="Nitin" tests="23" failures="0" errors="0" skipped="0" time="17.7607522">
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects invalid registration and role escalation" time="0.5648217">
+    <testsuite name="tests/integration/commerce.test.ts" timestamp="2026-11-26T08:23:37.019Z" hostname="Nitin" tests="27" failures="0" errors="0" skipped="0" time="15.8021187">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects invalid registration and role escalation" time="0.1442818">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; registers a seller as pending and protects publishing" time="2.5629916">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; registers a seller as pending and protects publishing" time="3.0899612">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; authenticates, rotates refresh token, and revokes a reused family" time="0.1306251">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; authenticates, rotates refresh token, and revokes a reused family" time="0.2132009">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects invalid login, tokens, CSRF origin, and unauthenticated orders" time="0.5619836">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects invalid login, tokens, CSRF origin, and unauthenticated orders" time="0.7407972">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; enforces cross-seller product and inventory isolation" time="0.1818496">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; enforces cross-seller product and inventory isolation" time="0.2147409">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; protects customer order privacy and admin permissions" time="0.5288371">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; protects customer order privacy and admin permissions" time="0.5893121">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects executable file uploads and spoofed MIME bytes" time="0.0823878">
+        <testcase classname="tests/integration/commerce.test.ts" name="authentication and authorization &gt; rejects executable file uploads and spoofed MIME bytes" time="0.0586971">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; creates a product for moderation and allows the owning seller to edit" time="0.1710061">
+        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; creates a product for moderation and allows the owning seller to edit" time="0.1456719">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; does not reserve stock for an abandoned cart and rejects invalid quantities" time="0.1364493">
+        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; does not reserve stock for an abandoned cart and rejects invalid quantities" time="0.1137471">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; validates empty carts, addresses, idempotency keys and malicious search" time="2.2950469">
+        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; validates empty carts, addresses, idempotency keys and malicious search" time="0.0811233">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; applies an integer discount once and prevents coupon reuse" time="1.9915371">
+        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; applies an integer discount once and prevents coupon reuse" time="0.3605553">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; atomically rejects imports containing another seller’s SKU" time="0.5997474">
+        <testcase classname="tests/integration/commerce.test.ts" name="catalog, carts and discounts &gt; atomically rejects imports containing another seller’s SKU" time="0.1502419">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; two independent sessions concurrently buy the last unit: exactly one reserves it" time="0.5230409">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; two independent sessions concurrently buy the last unit: exactly one reserves it" time="2.4107576">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; releases expired stock exactly once and keeps the ledger consistent" time="0.446851">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; releases expired stock exactly once and keeps the ledger consistent" time="0.3383734">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; prevents negative inventory and ledger mutation at database level" time="0.1152108">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; prevents negative inventory and ledger mutation at database level" time="0.0842196">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; replays checkout idempotently without a second order or reservation" time="0.2324071">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; replays checkout idempotently without a second order or reservation" time="0.1958912">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; deduplicates signed payment events and stock consumption" time="2.4842644">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; deduplicates signed payment events and stock consumption" time="2.3663575">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; rejects invalid signatures and payment amount mismatches" time="0.5414929">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; rejects invalid signatures and payment amount mismatches" time="0.2765248">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; releases stock on failure and reconciles late success without overselling" time="0.548179">
+        <testcase classname="tests/integration/commerce.test.ts" name="inventory capstone and failure paths &gt; releases stock on failure and reconciles late success without overselling" time="0.4129963">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; enforces partial fulfillment quantities and recovers a failed shipping callback" time="1.4085459">
+        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; enforces partial fulfillment quantities and recovers a failed shipping callback" time="0.5834286">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; refunds a received partial return once despite concurrent replays" time="1.1948263">
+        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; refunds a received partial return once despite concurrent replays" time="0.8423286">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; returns a safe explainable recommendation fallback" time="0.2045182">
+        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; returns a safe explainable recommendation fallback" time="0.1522837">
         </testcase>
-        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; runs indexed search and captures the actual PostgreSQL plan" time="0.2080964">
+        <testcase classname="tests/integration/commerce.test.ts" name="partial fulfillment, callbacks, returns and refunds &gt; runs indexed search and captures the actual PostgreSQL plan" time="0.0644569">
+        </testcase>
+        <testcase classname="tests/integration/commerce.test.ts" name="local integration adapters and catalog consistency &gt; uploads and retrieves a sanitized image from real local MinIO" time="0.6342613">
+        </testcase>
+        <testcase classname="tests/integration/commerce.test.ts" name="local integration adapters and catalog consistency &gt; captures a synthetic email in Mailpit without external delivery" time="0.2000707">
+        </testcase>
+        <testcase classname="tests/integration/commerce.test.ts" name="local integration adapters and catalog consistency &gt; imports an own price CSV and invalidates cached catalog stock after adjustment" time="0.3873422">
+        </testcase>
+        <testcase classname="tests/integration/commerce.test.ts" name="local integration adapters and catalog consistency &gt; imports a product catalog feed into pending moderation" time="0.8638014">
         </testcase>
     </testsuite>
 </testsuites>

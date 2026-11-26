@@ -1,10 +1,10 @@
 {
-  "executedAt": "2026-11-26T08:06:27.922Z",
+  "executedAt": "2026-11-26T08:23:30.691Z",
   "database": "PostgreSQL",
   "concurrentLastItem": {
     "statuses": [
-      201,
-      409
+      409,
+      201
     ],
     "losingError": "OUT_OF_STOCK",
     "onHand": 1,
@@ -39,7 +39,8 @@
     ],
     "refundRecords": 1,
     "refundAmount": 10000,
-    "restockMovements": 1
+    "restockMovements": 1,
+    "financialReversals": 1
   },
   "searchPlan": [
     {
@@ -49,15 +50,15 @@
             "Node Type": "Limit",
             "Parallel Aware": false,
             "Async Capable": false,
-            "Startup Cost": 0.15,
-            "Total Cost": 8.17,
-            "Plan Rows": 1,
-            "Plan Width": 32,
-            "Actual Startup Time": 0.159,
-            "Actual Total Time": 0.202,
+            "Startup Cost": 0,
+            "Total Cost": 4.32,
+            "Plan Rows": 24,
+            "Plan Width": 37,
+            "Actual Startup Time": 0.016,
+            "Actual Total Time": 0.035,
             "Actual Rows": 24,
             "Actual Loops": 1,
-            "Shared Hit Blocks": 5,
+            "Shared Hit Blocks": 2,
             "Shared Read Blocks": 0,
             "Shared Dirtied Blocks": 0,
             "Shared Written Blocks": 0,
@@ -69,27 +70,23 @@
             "Temp Written Blocks": 0,
             "Plans": [
               {
-                "Node Type": "Index Scan",
+                "Node Type": "Seq Scan",
                 "Parent Relationship": "Outer",
                 "Parallel Aware": false,
                 "Async Capable": false,
-                "Scan Direction": "Forward",
-                "Index Name": "Product_status_categoryId_createdAt_idx",
                 "Relation Name": "Product",
                 "Alias": "Product",
-                "Startup Cost": 0.15,
-                "Total Cost": 8.17,
-                "Plan Rows": 1,
-                "Plan Width": 32,
-                "Actual Startup Time": 0.157,
-                "Actual Total Time": 0.196,
+                "Startup Cost": 0,
+                "Total Cost": 4.86,
+                "Plan Rows": 27,
+                "Plan Width": 37,
+                "Actual Startup Time": 0.015,
+                "Actual Total Time": 0.032,
                 "Actual Rows": 24,
                 "Actual Loops": 1,
-                "Index Cond": "(status = 'ACTIVE'::text)",
-                "Rows Removed by Index Recheck": 0,
-                "Filter": "(name ~~* '%Test%'::text)",
-                "Rows Removed by Filter": 0,
-                "Shared Hit Blocks": 5,
+                "Filter": "((name ~~* '%Test%'::text) AND (status = 'ACTIVE'::text))",
+                "Rows Removed by Filter": 2,
+                "Shared Hit Blocks": 2,
                 "Shared Read Blocks": 0,
                 "Shared Dirtied Blocks": 0,
                 "Shared Written Blocks": 0,
@@ -103,7 +100,7 @@
             ]
           },
           "Planning": {
-            "Shared Hit Blocks": 1,
+            "Shared Hit Blocks": 7,
             "Shared Read Blocks": 0,
             "Shared Dirtied Blocks": 0,
             "Shared Written Blocks": 0,
@@ -114,9 +111,9 @@
             "Temp Read Blocks": 0,
             "Temp Written Blocks": 0
           },
-          "Planning Time": 0.273,
+          "Planning Time": 0.234,
           "Triggers": [],
-          "Execution Time": 0.261
+          "Execution Time": 0.049
         }
       ]
     }

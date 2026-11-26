@@ -1,4 +1,5 @@
 """Stateless, deterministic processing. Express is the owner of all persisted commerce data."""
+
 import csv
 import io
 import os
@@ -83,11 +84,33 @@ def feed(data: Feed):
         elif sku in seen:
             errors.append({"row": number, "error": "Duplicate normalized SKU", "sku": sku})
         elif not raw.isascii() or not raw.isdigit() or not 0 < int(raw) <= 100_000_000:
-            errors.append({"row": number, "error": "Price must be a positive integer in minor units", "sku": sku})
+            errors.append(
+                {"row": number, "error": "Price must be a positive integer in minor units", "sku": sku}
+            )
         else:
             records.append({"sku": sku, "price": int(raw), "name": " ".join((row.get("name") or "").split())})
         seen.add(sku)
     return {"records": records, "errors": errors, "valid": len(records), "invalid": len(errors)}
+
+
+@app.post("/feeds/catalog", dependencies=[Depends(authorized)])
+def catalog_feed(data: Feed):
+    validated = feed(data)
+    reader = csv.DictReader(io.StringIO(data.csv.lstrip("\ufeff")))
+    if not reader.fieldnames or not {"name", "description", "category_slug"}.issubset(reader.fieldnames):
+        raise HTTPException(422, "Catalog CSV requires sku,price,name,description,category_slug headers")
+    rows = {(r.get("sku") or "").strip().upper(): r for r in reader}
+    for record in validated["records"]:
+        source = rows[record["sku"]]
+        description = " ".join((source.get("description") or "").split())
+        category = (source.get("category_slug") or "").strip().lower()
+        if not 2 <= len(record["name"]) <= 200 or not 10 <= len(description) <= 5000 or not category:
+            validated["errors"].append(
+                {"sku": record["sku"], "error": "Name, description or category is invalid"}
+            )
+        record.update(description=description, category_slug=category)
+    validated["invalid"] = len(validated["errors"])
+    return validated
 
 
 class Product(BaseModel):
@@ -130,19 +153,26 @@ def recommendations(data: Recommendations):
     reason = "Popular across the marketplace; no personal history is needed"
     if data.mode == "recent":
         candidates = [by_id[i] for i in viewed if i in by_id]
-        return [{"id": p.id, "reason": "You recently viewed this product"} for p in candidates[:data.limit]]
+        return [{"id": p.id, "reason": "You recently viewed this product"} for p in candidates[: data.limit]]
     if data.mode in ("category", "related"):
         category = data.category_id if data.mode == "category" else related_category
         if category:
             candidates = [p for p in candidates if p.category_id == category]
-            reason = "In the same category as your selected product" if data.mode == "related" else "Matches your selected category"
+            reason = (
+                "In the same category as your selected product"
+                if data.mode == "related"
+                else "Matches your selected category"
+            )
     if data.mode == "frequent" and bought:
         candidates = [p for p in candidates if p.id in bought]
         candidates.sort(key=lambda p: (-bought[p.id], -p.popularity, p.id))
         reason = "Frequently purchased in your synthetic purchase history"
     elif data.mode == "personalized" and affinity:
         candidates.sort(key=lambda p: (-affinity[p.category_id], -p.popularity, p.id))
-        return [{"id": p.id, "reason": "Based on your browsing and purchase categories"} for p in candidates[:data.limit]]
+        return [
+            {"id": p.id, "reason": "Based on your browsing and purchase categories"}
+            for p in candidates[: data.limit]
+        ]
     else:
         candidates.sort(key=lambda p: (-p.popularity, p.id))
-    return [{"id": p.id, "reason": reason} for p in candidates[:data.limit]]
+    return [{"id": p.id, "reason": reason} for p in candidates[: data.limit]]
