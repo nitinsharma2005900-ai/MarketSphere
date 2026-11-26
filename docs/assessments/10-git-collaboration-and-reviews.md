@@ -2,7 +2,7 @@
 
 **Status:** Partial or simulated
 
-Real feature branch and commits; private GitHub repository. Human review/approval and owner-required branch settings are not fabricated.
+Real feature branch/commits and private GitHub repository. Human approval is outstanding. Branch protection was attempted but GitHub returned 403 requiring a supporting plan or visibility change; no paid/visibility change was made.
 
 ## Implementation
 
@@ -16,4 +16,4 @@ Follow the root README to start PostgreSQL, Redis, FastAPI, the Express API, wor
 
 Actual local commits and GitHub repository/PR inspection
 
-Actual evidence: `docs/evidence/git-history.txt; github-repository.json`. Run results and remaining external limitations are described in docs/test-report.md and docs/deployment.md.
+Actual evidence: `docs/evidence/git-history.txt; github-repository.json; branch-protection-result.txt`. Run results and remaining external limitations are described in docs/test-report.md and docs/deployment.md.

@@ -40,7 +40,7 @@ jobs:
       - run: npm ci
       - run: npm run db:generate && npm run db:migrate
       - run: uv sync --directory services/python-service --locked
-      - run: uv run --directory services/python-service uvicorn main:app --host 0.0.0.0 --port 8040 > /tmp/python.log 2>&1 &
+      - run: services/python-service/.venv/bin/python -m uvicorn main:app --app-dir services/python-service --host 0.0.0.0 --port 8040 > /tmp/python.log 2>&1 &
       - run: npm run lint && npm run typecheck
       - run: uv run --directory services/python-service ruff check . && uv run --directory services/python-service pytest --cov=main --cov-report=json:../../docs/evidence/python-coverage.json --junitxml=../../docs/evidence/python-results.xml
       - run: npm test

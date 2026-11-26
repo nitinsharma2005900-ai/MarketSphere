@@ -1,5 +1,5 @@
 {
-  "executedAt": "2026-11-26T08:43:03.254Z",
+  "executedAt": "2026-11-26T08:52:09.154Z",
   "services": [
     {
       "url": "http://localhost:3040",
@@ -38,13 +38,18 @@
     },
     {
       "url": "http://localhost:3050",
-      "status": "unavailable",
-      "error": "fetch failed"
+      "status": 200
     },
     {
       "url": "http://localhost:4050/ready",
-      "status": "unavailable",
-      "error": "fetch failed"
+      "status": 200,
+      "details": {
+        "status": "ready",
+        "database": "ok",
+        "redis": "ok",
+        "python": "ok",
+        "worker": "ok"
+      }
     },
     {
       "url": "http://localhost:8050/health",
@@ -52,13 +57,13 @@
     }
   ],
   "counts": {
-    "users": 15,
+    "users": 16,
     "sellers": 5,
     "products": 50,
     "variants": 100,
     "warehouses": 2,
-    "orders": 17,
-    "stockMovements": 235,
+    "orders": 18,
+    "stockMovements": 237,
     "refunds": 1
   }
 }

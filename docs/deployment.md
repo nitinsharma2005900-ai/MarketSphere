@@ -25,6 +25,8 @@ The supplied configuration is an educational production-like environment. Local 
 
 `Approved release` is manual. It publishes SHA-tagged images to GHCR and calls an owner-configured environment `DEPLOY_HOOK`, passing the image tag. Configure `API_PUBLIC_URL` as an environment variable and `DEPLOY_HOOK` as an environment secret. The hook's implementation is host-specific and is not fabricated by the project. Keep deployment accounts least privileged.
 
+An actual attempt to protect the private main branch returned HTTP 403 with GitHub's requirement to upgrade the account plan or change repository visibility. The repository remains private and no paid change was made. See `docs/evidence/branch-protection-result.txt`; the owner can decide how to enable that setting later. Independent human review remains outstanding.
+
 To roll back application code, dispatch the release workflow with a previously verified immutable `rollback_tag`; the configured deployment hook must switch the host to those images. Before a release, take a verified database backup. Database rollback is a separate reviewed operation: do not blindly reverse additive migrations after new data has been written. Restore to a separate database first, validate it, and make a controlled cutover if needed.
 
 ## Exact external blockers

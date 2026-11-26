@@ -11,7 +11,7 @@ The 12-page project4.pdf was read in full before development. Express owns all a
 - [x] Phase 7: MinIO/Mailpit integrations and explicitly labeled local payment/shipping providers
 - [x] Phase 8: 30 Node/API/UI tests, 13 Python tests, real PostgreSQL capstone and incident evidence
 - [x] Phase 9: full Compose build/start, GitHub repository/CI configuration and isolated backup restoration
-- [ ] Phase 10: final browser run, refreshed 15-page PDF, current evidence, final verified ZIP
+- [x] Phase 10: 49 passing automated tests, 28 additional portal route checks, refreshed 15-page PDF, running native/Compose services, verified ZIP (CRC, required files, hashes, secret exclusions and PDF page count)
 
 Public HTTPS deployment is blocked on an owner-provided host/domain and any cost approval. Genuine Stripe sandbox verification and human GitHub review/production approval remain external work. See the traceability matrix for exact scope.
 
