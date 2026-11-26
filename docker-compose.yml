@@ -1,0 +1,111 @@
+name: marketsphere
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: marketsphere
+      POSTGRES_USER: marketsphere
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run npm run setup:local}
+    ports: ["127.0.0.1:5440:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U marketsphere -d marketsphere"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    command: [redis-server, --appendonly, "yes"]
+    ports: ["127.0.0.1:6380:6379"]
+    volumes: ["redisdata:/data"]
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports: ["127.0.0.1:1025:1025", "127.0.0.1:8025:8025"]
+    restart: unless-stopped
+  minio:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/minio.Dockerfile
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY}
+    ports: ["127.0.0.1:9040:9000", "127.0.0.1:9041:9001"]
+    volumes: ["objects:/data"]
+    healthcheck:
+      test: [CMD, curl, -f, http://localhost:9000/minio/health/live]
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+  python:
+    build: ./services/python-service
+    environment:
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN}
+    ports: ["127.0.0.1:8040:8040"]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8040/health')"]
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+  migrate:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/backend.Dockerfile
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://marketsphere:${POSTGRES_PASSWORD}@postgres:5432/marketsphere
+    command: [sh, -c, "npx prisma migrate deploy --schema database/schema.prisma && npx tsx database/seed.ts"]
+    depends_on:
+      postgres: {condition: service_healthy}
+    profiles: [app]
+  api:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/backend.Dockerfile
+    env_file: .env
+    environment: &appenv
+      DATABASE_URL: postgresql://marketsphere:${POSTGRES_PASSWORD}@postgres:5432/marketsphere
+      REDIS_URL: redis://redis:6379
+      PYTHON_SERVICE_URL: http://python:8040
+      SMTP_HOST: mailpit
+      S3_ENDPOINT: http://minio:9000
+    ports: ["127.0.0.1:4040:4040"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+      python: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://localhost:4040/ready').then(r=>{if(!r.ok)process.exit(1)})"]
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+    profiles: [app]
+  worker:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/backend.Dockerfile
+    env_file: .env
+    environment: *appenv
+    command: [node, apps/backend/dist/worker.js]
+    depends_on:
+      api: {condition: service_healthy}
+    restart: unless-stopped
+    profiles: [app]
+  frontend:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/frontend.Dockerfile
+    ports: ["127.0.0.1:3040:3040"]
+    depends_on:
+      api: {condition: service_healthy}
+    restart: unless-stopped
+    profiles: [app]
+volumes:
+  pgdata:
+  redisdata:
+  objects:

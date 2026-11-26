@@ -1,0 +1,44 @@
+name: Approved release
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [staging, production]
+        required: true
+      rollback_tag:
+        description: Existing image SHA tag for rollback (leave empty for a new release)
+        required: false
+permissions:
+  contents: read
+  packages: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and publish immutable release images
+        if: inputs.rollback_tag == ''
+        env:
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          owner=$(echo "$OWNER" | tr '[:upper:]' '[:lower:]')
+          docker build -f infrastructure/docker/backend.Dockerfile -t ghcr.io/$owner/marketsphere-api:${{ github.sha }} .
+          docker build -f infrastructure/docker/frontend.Dockerfile --build-arg NEXT_PUBLIC_API_URL=${{ vars.API_PUBLIC_URL }} -t ghcr.io/$owner/marketsphere-web:${{ github.sha }} .
+          docker build -t ghcr.io/$owner/marketsphere-python:${{ github.sha }} services/python-service
+          docker push ghcr.io/$owner/marketsphere-api:${{ github.sha }}
+          docker push ghcr.io/$owner/marketsphere-web:${{ github.sha }}
+          docker push ghcr.io/$owner/marketsphere-python:${{ github.sha }}
+      - name: Request configured staging or production deployment
+        env:
+          DEPLOY_HOOK: ${{ secrets.DEPLOY_HOOK }}
+          IMAGE_TAG: ${{ inputs.rollback_tag || github.sha }}
+        run: |
+          test -n "$DEPLOY_HOOK" || { echo 'Configure the environment deployment hook and production reviewers.'; exit 1; }
+          curl --fail --silent --show-error --max-time 60 --retry 2 -X POST -H 'Content-Type: application/json' -d "{\"imageTag\":\"$IMAGE_TAG\"}" "$DEPLOY_HOOK"

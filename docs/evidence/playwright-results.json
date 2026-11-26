@@ -1,0 +1,535 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\amits\\Documents\\Market sphere\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\amits\\Documents\\Market sphere\\playwright.config.ts",
+    "rootDir": "C:/Users/amits/Documents/Market sphere/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/amits/Documents/Market sphere/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/amits/Documents/Market sphere/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\amits\\Documents\\Market sphere\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:3040",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "docs/evidence/playwright-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "marketplace.spec.ts",
+      "file": "marketplace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "desktop discovery, filtering, detail and responsive storefront",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11742,
+                  "error": {
+                    "message": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'Premium' }) resolved to 2 elements:\n    1) <button class=\"selected\">…</button> aka getByRole('button', { name: 'Choose your finish Premium' })\n    2) <button class=\"\">Premium</button> aka getByRole('button', { name: 'Premium', exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Premium' })\u001b[22m\n",
+                    "stack": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'Premium' }) resolved to 2 elements:\n    1) <button class=\"selected\">…</button> aka getByRole('button', { name: 'Choose your finish Premium' })\n    2) <button class=\"\">Premium</button> aka getByRole('button', { name: 'Premium', exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Premium' })\u001b[22m\n\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:8:199",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 199,
+                      "line": 8
+                    },
+                    "snippet": " \u001b[90m  6 |\u001b[39m   \u001b[36mconst\u001b[39m errors\u001b[33m:\u001b[39mstring[]\u001b[33m=\u001b[39m[]\u001b[33m;\u001b[39mpage\u001b[33m.\u001b[39mon(\u001b[32m'pageerror'\u001b[39m\u001b[33m,\u001b[39me\u001b[33m=>\u001b[39merrors\u001b[33m.\u001b[39mpush(e\u001b[33m.\u001b[39mmessage))\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/Good finds/\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.product-card'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m'docs/evidence/screenshots/storefront-desktop.png'\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m  7 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'link'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Shop all'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.product-card'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m12\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Filters'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.filter-panel select'\u001b[39m)\u001b[33m.\u001b[39mselectOption(\u001b[32m'home-living'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/category=home-living/\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.product-card'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  8 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.product-name'\u001b[39m)\u001b[33m.\u001b[39mfirst()\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Add to bag'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Premium'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mfalse\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m'docs/evidence/screenshots/product-detail.png'\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m  9 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({width\u001b[33m:\u001b[39m\u001b[35m390\u001b[39m\u001b[33m,\u001b[39mheight\u001b[33m:\u001b[39m\u001b[35m844\u001b[39m})\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.product-card'\u001b[39m)\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39mexpect(\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(()\u001b[33m=>\u001b[39mdocument\u001b[33m.\u001b[39mdocumentElement\u001b[33m.\u001b[39mscrollWidth\u001b[33m<=\u001b[39minnerWidth))\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m'docs/evidence/screenshots/storefront-mobile.png'\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39mexpect(errors)\u001b[33m.\u001b[39mtoEqual([])\u001b[33m;\u001b[39m\n \u001b[90m 10 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 11 |\u001b[39m test(\u001b[32m'customer completes a sandbox purchase and opens a support conversation'\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page\u001b[33m,\u001b[39mrequest})\u001b[33m=>\u001b[39m{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                        "column": 199,
+                        "line": 8
+                      },
+                      "message": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'Premium' }) resolved to 2 elements:\n    1) <button class=\"selected\">…</button> aka getByRole('button', { name: 'Choose your finish Premium' })\n    2) <button class=\"\">Premium</button> aka getByRole('button', { name: 'Premium', exact: true })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Premium' })\u001b[22m\n\n\n   6 |   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:/Good finds/})).toBeVisible();await expect(page.locator('.product-card').first()).toBeVisible();await page.screenshot({path:'docs/evidence/screenshots/storefront-desktop.png',fullPage:true});\n   7 |   await page.getByRole('link',{name:'Shop all',exact:true}).click();await expect(page.locator('.product-card')).toHaveCount(12);await page.getByRole('button',{name:'Filters',exact:true}).click();await page.locator('.filter-panel select').selectOption('home-living');await expect(page).toHaveURL(/category=home-living/);await expect(page.locator('.product-card').first()).toBeVisible();\n>  8 |   await page.locator('.product-name').first().click();await expect(page.getByRole('button',{name:'Add to bag',exact:true})).toBeVisible();await page.getByRole('button',{name:'Premium',exact:false}).click();await page.screenshot({path:'docs/evidence/screenshots/product-detail.png',fullPage:true});\n     |                                                                                                                                                                                                       ^\n   9 |   await page.setViewportSize({width:390,height:844});await page.goto('/');await expect(page.locator('.product-card').first()).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'docs/evidence/screenshots/storefront-mobile.png',fullPage:true});expect(errors).toEqual([]);\n  10 | });\n  11 | test('customer completes a sandbox purchase and opens a support conversation',async({page,request})=>{\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:8:199"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:06:17.143Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 199,
+                    "line": 8
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-c05c17c9c9c40ea1976d",
+          "file": "marketplace.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "customer completes a sandbox purchase and opens a support conversation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10361,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:06:34.798Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-3fcd23bca1d6872a42e1",
+          "file": "marketplace.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "seller login and role workspace",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12149,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 658,
+                      "line": 17
+                    },
+                    "snippet": " \u001b[90m 15 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m [role\u001b[33m,\u001b[39msection\u001b[33m,\u001b[39mtitle] \u001b[36mof\u001b[39m [[\u001b[32m'seller'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'products'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Your product collection'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'warehouse'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'inventory'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Inventory, in the clear.'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'support'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'tickets'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Support tickets'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'admin'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'health'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'System health'\u001b[39m]]){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   test(\u001b[32m`${role} login and role workspace`\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.demo-buttons'\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mrole\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Sign in'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'/portal'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/Good to see you/\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m`docs/evidence/screenshots/${role}-dashboard.png`\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/portal/'\u001b[39m\u001b[33m+\u001b[39msection)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mtitle\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.loading'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'alert'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                        "column": 658,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  15 | });\n  16 | for(const [role,section,title] of [['seller','products','Your product collection'],['warehouse','inventory','Inventory, in the clear.'],['support','tickets','Support tickets'],['admin','health','System health']]){\n> 17 |   test(`${role} login and role workspace`,async({page})=>{await page.goto('/login');await page.locator('.demo-buttons').getByRole('button',{name:role,exact:true}).click();await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page).toHaveURL('/portal');await expect(page.getByRole('heading',{name:/Good to see you/})).toBeVisible();await page.screenshot({path:`docs/evidence/screenshots/${role}-dashboard.png`,fullPage:true});await page.goto('/portal/'+section);await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();await expect(page.locator('.loading')).toHaveCount(0);await expect(page.getByRole('alert')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  18 | }\n  19 |\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:06:45.558Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-seller-login-and-role-workspace-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-seller-login-and-role-workspace-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-seller-login-and-role-workspace-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 658,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-dab790166dbd36d37c4e",
+          "file": "marketplace.spec.ts",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "warehouse login and role workspace",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8814,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 658,
+                      "line": 17
+                    },
+                    "snippet": " \u001b[90m 15 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m [role\u001b[33m,\u001b[39msection\u001b[33m,\u001b[39mtitle] \u001b[36mof\u001b[39m [[\u001b[32m'seller'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'products'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Your product collection'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'warehouse'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'inventory'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Inventory, in the clear.'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'support'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'tickets'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Support tickets'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'admin'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'health'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'System health'\u001b[39m]]){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   test(\u001b[32m`${role} login and role workspace`\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.demo-buttons'\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mrole\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Sign in'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'/portal'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/Good to see you/\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m`docs/evidence/screenshots/${role}-dashboard.png`\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/portal/'\u001b[39m\u001b[33m+\u001b[39msection)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mtitle\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.loading'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'alert'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                        "column": 658,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  15 | });\n  16 | for(const [role,section,title] of [['seller','products','Your product collection'],['warehouse','inventory','Inventory, in the clear.'],['support','tickets','Support tickets'],['admin','health','System health']]){\n> 17 |   test(`${role} login and role workspace`,async({page})=>{await page.goto('/login');await page.locator('.demo-buttons').getByRole('button',{name:role,exact:true}).click();await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page).toHaveURL('/portal');await expect(page.getByRole('heading',{name:/Good to see you/})).toBeVisible();await page.screenshot({path:`docs/evidence/screenshots/${role}-dashboard.png`,fullPage:true});await page.goto('/portal/'+section);await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();await expect(page.locator('.loading')).toHaveCount(0);await expect(page.getByRole('alert')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  18 | }\n  19 |\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:07:00.426Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-warehouse-login-and-role-workspace-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-warehouse-login-and-role-workspace-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-warehouse-login-and-role-workspace-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 658,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-da9b8579869d5036b995",
+          "file": "marketplace.spec.ts",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "support login and role workspace",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9298,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 658,
+                      "line": 17
+                    },
+                    "snippet": " \u001b[90m 15 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m [role\u001b[33m,\u001b[39msection\u001b[33m,\u001b[39mtitle] \u001b[36mof\u001b[39m [[\u001b[32m'seller'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'products'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Your product collection'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'warehouse'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'inventory'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Inventory, in the clear.'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'support'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'tickets'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Support tickets'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'admin'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'health'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'System health'\u001b[39m]]){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   test(\u001b[32m`${role} login and role workspace`\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.demo-buttons'\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mrole\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Sign in'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'/portal'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/Good to see you/\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m`docs/evidence/screenshots/${role}-dashboard.png`\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/portal/'\u001b[39m\u001b[33m+\u001b[39msection)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mtitle\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.loading'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'alert'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                        "column": 658,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  15 | });\n  16 | for(const [role,section,title] of [['seller','products','Your product collection'],['warehouse','inventory','Inventory, in the clear.'],['support','tickets','Support tickets'],['admin','health','System health']]){\n> 17 |   test(`${role} login and role workspace`,async({page})=>{await page.goto('/login');await page.locator('.demo-buttons').getByRole('button',{name:role,exact:true}).click();await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page).toHaveURL('/portal');await expect(page.getByRole('heading',{name:/Good to see you/})).toBeVisible();await page.screenshot({path:`docs/evidence/screenshots/${role}-dashboard.png`,fullPage:true});await page.goto('/portal/'+section);await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();await expect(page.locator('.loading')).toHaveCount(0);await expect(page.getByRole('alert')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  18 | }\n  19 |\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:07:11.431Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-support-login-and-role-workspace-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-support-login-and-role-workspace-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-support-login-and-role-workspace-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 658,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-02ecb866a4ae2ee9f8c0",
+          "file": "marketplace.spec.ts",
+          "line": 17,
+          "column": 3
+        },
+        {
+          "title": "admin login and role workspace",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11916,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 658,
+                      "line": 17
+                    },
+                    "snippet": " \u001b[90m 15 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 16 |\u001b[39m \u001b[36mfor\u001b[39m(\u001b[36mconst\u001b[39m [role\u001b[33m,\u001b[39msection\u001b[33m,\u001b[39mtitle] \u001b[36mof\u001b[39m [[\u001b[32m'seller'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'products'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Your product collection'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'warehouse'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'inventory'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Inventory, in the clear.'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'support'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'tickets'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Support tickets'\u001b[39m]\u001b[33m,\u001b[39m[\u001b[32m'admin'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'health'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'System health'\u001b[39m]]){\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 |\u001b[39m   test(\u001b[32m`${role} login and role workspace`\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page})\u001b[33m=>\u001b[39m{\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/login'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.demo-buttons'\u001b[39m)\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mrole\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'button'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[32m'Sign in'\u001b[39m\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'/portal'\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39m\u001b[35m/Good to see you/\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({path\u001b[33m:\u001b[39m\u001b[32m`docs/evidence/screenshots/${role}-dashboard.png`\u001b[39m\u001b[33m,\u001b[39mfullPage\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m})\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/portal/'\u001b[39m\u001b[33m+\u001b[39msection)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'heading'\u001b[39m\u001b[33m,\u001b[39m{name\u001b[33m:\u001b[39mtitle\u001b[33m,\u001b[39mexact\u001b[33m:\u001b[39m\u001b[36mtrue\u001b[39m}))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.loading'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m\u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'alert'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m0\u001b[39m)\u001b[33m;\u001b[39m})\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 18 |\u001b[39m }\n \u001b[90m 19 |\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                        "column": 658,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('alert')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('alert') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('alert')\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  15 | });\n  16 | for(const [role,section,title] of [['seller','products','Your product collection'],['warehouse','inventory','Inventory, in the clear.'],['support','tickets','Support tickets'],['admin','health','System health']]){\n> 17 |   test(`${role} login and role workspace`,async({page})=>{await page.goto('/login');await page.locator('.demo-buttons').getByRole('button',{name:role,exact:true}).click();await page.getByRole('button',{name:'Sign in',exact:true}).click();await expect(page).toHaveURL('/portal');await expect(page.getByRole('heading',{name:/Good to see you/})).toBeVisible();await page.screenshot({path:`docs/evidence/screenshots/${role}-dashboard.png`,fullPage:true});await page.goto('/portal/'+section);await expect(page.getByRole('heading',{name:title,exact:true})).toBeVisible();await expect(page.locator('.loading')).toHaveCount(0);await expect(page.getByRole('alert')).toHaveCount(0);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  18 | }\n  19 |\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:17:658"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-26T08:07:22.469Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-admin-login-and-role-workspace-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-admin-login-and-role-workspace-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-admin-login-and-role-workspace-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 658,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "170e8a9d719db4caeb1d-1681f1fd337051dea979",
+          "file": "marketplace.spec.ts",
+          "line": 17,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-26T08:06:16.049Z",
+    "duration": 79666.26299999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

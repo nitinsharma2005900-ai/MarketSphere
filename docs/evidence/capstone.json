@@ -1,0 +1,124 @@
+{
+  "executedAt": "2026-11-26T08:06:27.922Z",
+  "database": "PostgreSQL",
+  "concurrentLastItem": {
+    "statuses": [
+      201,
+      409
+    ],
+    "losingError": "OUT_OF_STOCK",
+    "onHand": 1,
+    "reserved": 1,
+    "activeReservations": 1,
+    "ledgerEntries": 2,
+    "independentAuthenticatedSessions": 2
+  },
+  "duplicatePayment": {
+    "replays": 5,
+    "statuses": [
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "paymentEvents": 1,
+    "orders": 1,
+    "saleMovements": 1,
+    "onHand": 2,
+    "reserved": 0
+  },
+  "duplicateRefund": {
+    "replays": 5,
+    "statuses": [
+      200,
+      200,
+      200,
+      200,
+      200
+    ],
+    "refundRecords": 1,
+    "refundAmount": 10000,
+    "restockMovements": 1
+  },
+  "searchPlan": [
+    {
+      "QUERY PLAN": [
+        {
+          "Plan": {
+            "Node Type": "Limit",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 0.15,
+            "Total Cost": 8.17,
+            "Plan Rows": 1,
+            "Plan Width": 32,
+            "Actual Startup Time": 0.159,
+            "Actual Total Time": 0.202,
+            "Actual Rows": 24,
+            "Actual Loops": 1,
+            "Shared Hit Blocks": 5,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "Product_status_categoryId_createdAt_idx",
+                "Relation Name": "Product",
+                "Alias": "Product",
+                "Startup Cost": 0.15,
+                "Total Cost": 8.17,
+                "Plan Rows": 1,
+                "Plan Width": 32,
+                "Actual Startup Time": 0.157,
+                "Actual Total Time": 0.196,
+                "Actual Rows": 24,
+                "Actual Loops": 1,
+                "Index Cond": "(status = 'ACTIVE'::text)",
+                "Rows Removed by Index Recheck": 0,
+                "Filter": "(name ~~* '%Test%'::text)",
+                "Rows Removed by Filter": 0,
+                "Shared Hit Blocks": 5,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 1,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.273,
+          "Triggers": [],
+          "Execution Time": 0.261
+        }
+      ]
+    }
+  ]
+}

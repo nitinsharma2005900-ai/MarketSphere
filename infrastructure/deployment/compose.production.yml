@@ -1,0 +1,44 @@
+services:
+  postgres:
+    ports: !reset []
+  redis:
+    ports: !reset []
+  python:
+    ports: !reset []
+  minio:
+    ports: !reset []
+  mailpit:
+    ports: !reset []
+  api:
+    ports: !reset []
+    environment:
+      NODE_ENV: production
+      DEMO_MODE: "false"
+      FRONTEND_URL: https://${MARKETSPHERE_DOMAIN}
+  frontend:
+    ports: !reset []
+    build:
+      args:
+        NEXT_PUBLIC_API_URL: https://${MARKETSPHERE_DOMAIN}/api/v1
+  worker:
+    environment:
+      NODE_ENV: production
+      DEMO_MODE: "false"
+  migrate:
+    command: [npx, prisma, migrate, deploy, --schema, database/schema.prisma]
+  proxy:
+    image: caddy:2-alpine
+    ports: ["80:80", "443:443", "443:443/udp"]
+    environment:
+      MARKETSPHERE_DOMAIN: ${MARKETSPHERE_DOMAIN:?Set your staging domain}
+    volumes:
+      - ./infrastructure/deployment/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      frontend: {condition: service_started}
+    restart: unless-stopped
+    profiles: [app]
+volumes:
+  caddy_data:
+  caddy_config:

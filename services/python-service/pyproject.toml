@@ -1,0 +1,12 @@
+[project]
+name = "marketsphere-processing"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.118,<1", "uvicorn>=0.37,<1", "pydantic>=2.11,<3", "httpx>=0.28,<1", "pandas>=2.3,<4"]
+[dependency-groups]
+dev = ["pytest>=8.4,<10", "pytest-cov>=6,<8", "ruff>=0.13,<1", "reportlab>=4.4,<5", "pypdf>=6,<7"]
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 110

@@ -1,0 +1,60 @@
+name: Marketplace quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: marketsphere
+          POSTGRES_PASSWORD: synthetic-ci-only
+          POSTGRES_DB: marketsphere_test
+        ports: ["5440:5432"]
+        options: --health-cmd "pg_isready -U marketsphere" --health-interval 5s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6380:6379"]
+    env:
+      DATABASE_URL: postgresql://marketsphere:synthetic-ci-only@localhost:5440/marketsphere_test
+      REDIS_URL: redis://localhost:6380
+      JWT_ACCESS_SECRET: synthetic-ci-access-secret-at-least-32-characters
+      JWT_REFRESH_SECRET: synthetic-ci-refresh-secret-at-least-32-characters
+      INTERNAL_SERVICE_TOKEN: synthetic-ci-internal-secret-at-least-32-characters
+      PAYMENT_WEBHOOK_SECRET: synthetic-ci-payment-secret-at-least-32-characters
+      SHIPPING_WEBHOOK_SECRET: synthetic-ci-shipping-secret-at-least-32-characters
+      PYTHON_SERVICE_URL: http://localhost:8040
+      DEMO_MODE: "true"
+      DEMO_PASSWORD: MarketSphere!2026
+      LOG_LEVEL: silent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: npm}
+      - uses: astral-sh/setup-uv@v6
+      - run: npm ci
+      - run: npm run db:generate && npm run db:migrate
+      - run: uv sync --directory services/python-service --locked
+      - run: uv run --directory services/python-service uvicorn main:app --host 0.0.0.0 --port 8040 > /tmp/python.log 2>&1 &
+      - run: npm run lint && npm run typecheck
+      - run: uv run --directory services/python-service ruff check . && uv run --directory services/python-service pytest --cov=main --cov-report=json:../../docs/evidence/python-coverage.json --junitxml=../../docs/evidence/python-results.xml
+      - run: npm test
+      - run: npm audit --audit-level=moderate
+      - run: npm run build
+      - run: npm run db:seed
+      - run: npm run dev:api > /tmp/api.log 2>&1 &
+      - run: npm run dev:web > /tmp/web.log 2>&1 &
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/wait-services.mjs && npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: actual-test-evidence, path: docs/evidence}
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f infrastructure/docker/backend.Dockerfile -t marketsphere-api .
+      - run: docker build -f infrastructure/docker/frontend.Dockerfile -t marketsphere-web .
+      - run: docker build -t marketsphere-python services/python-service

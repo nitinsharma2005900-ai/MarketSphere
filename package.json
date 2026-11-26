@@ -1,0 +1,44 @@
+{
+  "name": "marketsphere",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w apps/backend",
+    "dev:web": "npm run dev -w apps/frontend",
+    "worker": "npm run worker -w apps/backend",
+    "db:generate": "prisma generate --schema database/schema.prisma",
+    "db:migrate": "prisma migrate deploy --schema database/schema.prisma",
+    "db:seed": "tsx database/seed.ts",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "eslint apps database tests --max-warnings 0",
+    "test": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "setup:local": "node scripts/setup-local.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@testing-library/jest-dom": "^6.9.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^5.1.2",
+    "eslint": "^9.36.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.10.1",
+    "prisma": "^6.12.0",
+    "supertest": "^7.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.44.0",
+    "vitest": "^5.1.2"
+  },
+  "type": "module"
+}
