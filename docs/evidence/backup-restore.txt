@@ -1,0 +1,8 @@
+﻿Created .runtime/backups/marketsphere-20261126T083638Z.dump
+ products | orders | movements 
+----------+--------+-----------
+       50 |     13 |       227
+(1 row)
+
+DO
+Restore verified in isolated database marketsphere_restore_20261126083644

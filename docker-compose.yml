@@ -98,6 +98,12 @@ services:
     command: [node, apps/backend/dist/worker.js]
     depends_on:
       api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, node, -e, "const Redis=require('ioredis');const r=new Redis(process.env.REDIS_URL);r.get('worker:heartbeat').then(v=>{r.disconnect();process.exit(v?0:1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
     restart: unless-stopped
     profiles: [app]
   frontend:

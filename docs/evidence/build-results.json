@@ -1,29 +1,30 @@
 {
-  "executedAt": "2026-11-26T08:28:11.169Z",
+  "executedAt": "2026-11-26T08:39:42.810Z",
   "checks": [
     {
       "name": "backend-build",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 38.528
+      "elapsedSeconds": 18.098
     },
     {
       "name": "frontend-typecheck",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 15.064
+      "elapsedSeconds": 10.166
     },
     {
       "name": "lint",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 11.035
+      "elapsedSeconds": 8.267
     },
     {
       "name": "frontend-build",
       "exitCode": 0,
       "passed": true,
-      "elapsedSeconds": 77.644
+      "elapsedSeconds": 49.146,
+      "executedAt": "2026-11-26T08:39:42.793Z"
     }
   ]
 }

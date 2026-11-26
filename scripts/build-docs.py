@@ -203,7 +203,7 @@ page("Database ER diagram")
 text(f"The actual Prisma schema contains {len(models)} models and {len(relations)} declared foreign-key relations. This compact map includes every model; architecture/database-er.md provides the full field-level Mermaid diagram.")
 d = Drawing(495, 515)
 cols = 4; rows = math.ceil(len(models) / cols); box_w = 115; box_h = 42; gap = 11
-positions = {name: ((i % cols) * (box_w + gap), 500 - (i // cols) * (box_h + 10)) for i, name in enumerate(models)}
+positions = {name: ((i % cols) * (box_w + gap), 468 - (i // cols) * (box_h + 10)) for i, name in enumerate(models)}
 for parent, child, _ in relations:
     x, y = positions[parent]; xx, yy = positions[child]
     d.add(Line(x + box_w / 2, y + box_h / 2, xx + box_w / 2, yy + box_h / 2, strokeColor=colors.HexColor("#d4dfeb"), strokeWidth=.35))

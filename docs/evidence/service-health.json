@@ -1,0 +1,69 @@
+{
+  "executedAt": "2026-11-26T08:36:59.644Z",
+  "services": [
+    {
+      "url": "http://localhost:3040",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4040/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4040/ready",
+      "status": 200,
+      "details": {
+        "status": "ready",
+        "database": "ok",
+        "redis": "ok",
+        "python": "ok",
+        "worker": "ok"
+      }
+    },
+    {
+      "url": "http://localhost:4040/api-docs/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:8040/health",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:9040/minio/health/live",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:8025/api/v1/messages",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:3050",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4050/ready",
+      "status": 200,
+      "details": {
+        "status": "ready",
+        "database": "ok",
+        "redis": "ok",
+        "python": "ok",
+        "worker": "ok"
+      }
+    },
+    {
+      "url": "http://localhost:8050/health",
+      "status": 200
+    }
+  ],
+  "counts": {
+    "users": 14,
+    "sellers": 5,
+    "products": 50,
+    "variants": 100,
+    "warehouses": 2,
+    "orders": 16,
+    "stockMovements": 233,
+    "refunds": 1
+  }
+}

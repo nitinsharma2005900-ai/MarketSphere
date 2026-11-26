@@ -131,29 +131,32 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "timedOut",
-                  "duration": 61782,
+                  "status": "failed",
+                  "duration": 9655,
                   "error": {
-                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
-                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:47:5",
+                    "location": {
+                      "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                      "column": 5,
+                      "line": 47
+                    },
+                    "snippet": " \u001b[90m 45 |\u001b[39m       () \u001b[33m=>\u001b[39m document\u001b[33m.\u001b[39mdocumentElement\u001b[33m.\u001b[39mscrollWidth \u001b[33m<=\u001b[39m innerWidth\u001b[33m,\u001b[39m\n \u001b[90m 46 |\u001b[39m     )\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 |\u001b[39m   )\u001b[33m.\u001b[39mtoBe(\u001b[36mtrue\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({\n \u001b[90m 49 |\u001b[39m     path\u001b[33m:\u001b[39m \u001b[32m\"docs/evidence/screenshots/storefront-mobile.png\"\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 50 |\u001b[39m     fullPage\u001b[33m:\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m,\u001b[39m"
                   },
                   "errors": [
                     {
-                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
-                    },
-                    {
                       "location": {
                         "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
-                        "column": 6,
-                        "line": 27
+                        "column": 5,
+                        "line": 47
                       },
-                      "message": "Error: locator.selectOption: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Category', { exact: true })\u001b[22m\n\n\n  25 |   await page\n  26 |     .getByLabel(\"Category\", { exact: true })\n> 27 |     .selectOption(\"home-living\");\n     |      ^\n  28 |   await expect(page).toHaveURL(/category=home-living/);\n  29 |   await expect(page.locator(\".product-card\").first()).toBeVisible();\n  30 |   await page.locator(\".product-name\").first().click();\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:27:6"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  45 |       () => document.documentElement.scrollWidth <= innerWidth,\n  46 |     ),\n> 47 |   ).toBe(true);\n     |     ^\n  48 |   await page.screenshot({\n  49 |     path: \"docs/evidence/screenshots/storefront-mobile.png\",\n  50 |     fullPage: true,\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:47:5"
                     }
                   ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:31:34.152Z",
+                  "startTime": "2026-11-26T08:36:21.420Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -171,7 +174,12 @@
                       "contentType": "application/zip",
                       "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\trace.zip"
                     }
-                  ]
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
+                    "column": 5,
+                    "line": 47
+                  }
                 }
               ],
               "status": "unexpected"
@@ -198,12 +206,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9592,
+                  "duration": 9172,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:32:50.933Z",
+                  "startTime": "2026-11-26T08:36:34.663Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -213,7 +221,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-3fcd23bca1d6872a42e1",
           "file": "marketplace.spec.ts",
-          "line": 53,
+          "line": 54,
           "column": 1
         },
         {
@@ -232,12 +240,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5172,
+                  "duration": 5712,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:01.152Z",
+                  "startTime": "2026-11-26T08:36:44.363Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -247,7 +255,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-dab790166dbd36d37c4e",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -266,12 +274,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3995,
+                  "duration": 6292,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:06.345Z",
+                  "startTime": "2026-11-26T08:36:50.104Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -281,7 +289,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-da9b8579869d5036b995",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -300,12 +308,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4677,
+                  "duration": 3333,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:10.362Z",
+                  "startTime": "2026-11-26T08:36:56.414Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -315,7 +323,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-02ecb866a4ae2ee9f8c0",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -334,12 +342,12 @@
                   "workerIndex": 1,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7486,
+                  "duration": 3289,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:15.061Z",
+                  "startTime": "2026-11-26T08:36:59.778Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -349,7 +357,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-1681f1fd337051dea979",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         }
       ]
@@ -357,8 +365,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-26T08:31:32.773Z",
-    "duration": 117146.55900000001,
+    "startTime": "2026-11-26T08:36:19.830Z",
+    "duration": 46675.674,
     "expected": 5,
     "skipped": 0,
     "unexpected": 1,

@@ -3618,3 +3618,6 @@ th {
     font-size: 13px;
   }
 }
+
+@media(max-width:1200px){.editorial,.seller-banner{width:calc(100% - 64px)}}
+@media(max-width:760px){.editorial,.seller-banner{width:calc(100% - 44px)}}
