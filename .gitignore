@@ -20,3 +20,4 @@ playwright-report/
 *.tsbuildinfo
 .coverage
 !docs/evidence/checks/*.log
+docs/evidence/package-manifest.json

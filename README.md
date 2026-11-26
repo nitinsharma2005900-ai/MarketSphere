@@ -6,6 +6,8 @@ The original 12-page assessment is included as `project4.pdf`. Implementation sc
 
 Source repository: [nitinsharma2005900-ai/MarketSphere](https://github.com/nitinsharma2005900-ai/MarketSphere) (private; access is required).
 
+The complete current work is on [`feature/marketsphere-platform`](https://github.com/nitinsharma2005900-ai/MarketSphere/tree/feature/marketsphere-platform), with [draft pull request #1](https://github.com/nitinsharma2005900-ai/MarketSphere/pull/1) available for independent review. No human approval is claimed. GitHub rejected private-repository branch protection with HTTP 403 requiring a supporting plan or visibility change; neither billing nor visibility was changed.
+
 ## Start with Docker
 
 Install Node.js 22+, Docker Engine with Compose v2.24+, Git, and optionally Python 3.12+ with uv for native development. On this Windows machine Docker runs inside WSL Ubuntu. Prefix Docker commands with `wsl --cd . -e` from PowerShell when Docker is not on the Windows PATH.

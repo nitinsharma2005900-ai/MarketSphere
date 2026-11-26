@@ -1,0 +1,4 @@
+﻿20c931c 2026-11-26T14:17:04+05:30 Show seller approval and verify built applications in CI
+1d78278 2026-11-26T14:10:52+05:30 Constrain responsive sections and add reproducible assessment documentation
+863074d 2026-11-26T14:04:57+05:30 Fix serialization retries and verify pricing, security, sandbox adapters and financial reversals
+e73d477 2026-11-26T13:39:24+05:30 Implement transactional commerce services and connected role workspaces

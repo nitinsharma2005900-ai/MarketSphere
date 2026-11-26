@@ -2,6 +2,9 @@ name: Marketplace quality
 on: [push, pull_request]
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
       - run: npm ci
       - run: npm run db:generate && npm run db:migrate
       - run: uv sync --directory services/python-service --locked
-      - run: uv run --directory services/python-service uvicorn main:app --host 0.0.0.0 --port 8040 > /tmp/python.log 2>&1 &
+      - run: services/python-service/.venv/bin/python -m uvicorn main:app --app-dir services/python-service --host 0.0.0.0 --port 8040 > /tmp/python.log 2>&1 &
       - run: npm run lint && npm run typecheck
       - run: uv run --directory services/python-service ruff check . && uv run --directory services/python-service pytest --cov=main --cov-report=json:../../docs/evidence/python-coverage.json --junitxml=../../docs/evidence/python-results.xml
       - run: npm test
@@ -46,8 +49,8 @@ jobs:
       - run: uvx pip-audit -r /tmp/marketsphere-requirements.txt -f json -o docs/evidence/python-audit.json
       - run: npm run build
       - run: npm run db:seed
-      - run: npm run dev:api > /tmp/api.log 2>&1 &
-      - run: npm run dev:web > /tmp/web.log 2>&1 &
+      - run: npm run start -w apps/backend > /tmp/api.log 2>&1 &
+      - run: npm run start -w apps/frontend > /tmp/web.log 2>&1 &
       - run: npx playwright install --with-deps chromium
       - run: node scripts/wait-services.mjs && npm run test:e2e
       - uses: actions/upload-artifact@v4

@@ -118,7 +118,7 @@
       "specs": [
         {
           "title": "desktop discovery, filtering, detail and responsive storefront",
-          "ok": false,
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -131,50 +131,18 @@
                 {
                   "workerIndex": 0,
                   "parallelIndex": 0,
-                  "status": "timedOut",
-                  "duration": 61782,
-                  "error": {
-                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
-                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
-                  },
-                  "errors": [
-                    {
-                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
-                    },
-                    {
-                      "location": {
-                        "file": "C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts",
-                        "column": 6,
-                        "line": 27
-                      },
-                      "message": "Error: locator.selectOption: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Category', { exact: true })\u001b[22m\n\n\n  25 |   await page\n  26 |     .getByLabel(\"Category\", { exact: true })\n> 27 |     .selectOption(\"home-living\");\n     |      ^\n  28 |   await expect(page).toHaveURL(/category=home-living/);\n  29 |   await expect(page.locator(\".product-card\").first()).toBeVisible();\n  30 |   await page.locator(\".product-name\").first().click();\n    at C:\\Users\\amits\\Documents\\Market sphere\\tests\\e2e\\marketplace.spec.ts:27:6"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 6668,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:31:34.152Z",
+                  "startTime": "2026-11-26T08:49:31.579Z",
                   "annotations": [],
-                  "attachments": [
-                    {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\test-failed-1.png"
-                    },
-                    {
-                      "name": "error-context",
-                      "contentType": "text/markdown",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\error-context.md"
-                    },
-                    {
-                      "name": "trace",
-                      "contentType": "application/zip",
-                      "path": "C:\\Users\\amits\\Documents\\Market sphere\\test-results\\marketplace-desktop-discov-b914a-l-and-responsive-storefront-chromium\\trace.zip"
-                    }
-                  ]
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
           "id": "170e8a9d719db4caeb1d-c05c17c9c9c40ea1976d",
@@ -195,15 +163,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9592,
+                  "duration": 8671,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:32:50.933Z",
+                  "startTime": "2026-11-26T08:49:39.182Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -213,7 +181,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-3fcd23bca1d6872a42e1",
           "file": "marketplace.spec.ts",
-          "line": 53,
+          "line": 54,
           "column": 1
         },
         {
@@ -229,15 +197,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5172,
+                  "duration": 5509,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:01.152Z",
+                  "startTime": "2026-11-26T08:49:47.890Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -247,7 +215,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-dab790166dbd36d37c4e",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -263,15 +231,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3995,
+                  "duration": 2283,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:06.345Z",
+                  "startTime": "2026-11-26T08:49:53.429Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -281,7 +249,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-da9b8579869d5036b995",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -297,15 +265,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4677,
+                  "duration": 2356,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:10.362Z",
+                  "startTime": "2026-11-26T08:49:55.741Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -315,7 +283,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-02ecb866a4ae2ee9f8c0",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         },
         {
@@ -331,15 +299,15 @@
               "projectName": "chromium",
               "results": [
                 {
-                  "workerIndex": 1,
+                  "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7486,
+                  "duration": 2364,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-26T08:33:15.061Z",
+                  "startTime": "2026-11-26T08:49:58.120Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -349,7 +317,7 @@
           ],
           "id": "170e8a9d719db4caeb1d-1681f1fd337051dea979",
           "file": "marketplace.spec.ts",
-          "line": 128,
+          "line": 129,
           "column": 3
         }
       ]
@@ -357,11 +325,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-26T08:31:32.773Z",
-    "duration": 117146.55900000001,
-    "expected": 5,
+    "startTime": "2026-11-26T08:49:30.389Z",
+    "duration": 33510.671,
+    "expected": 6,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }

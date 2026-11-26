@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { action } from "./providers";
+import { action, useAuth } from "./providers";
 import { Modal, Field, money } from "./ui";
 export function SkuManager({
   product,
@@ -12,6 +12,7 @@ export function SkuManager({
   close: () => void;
 }) {
   const client = useQueryClient();
+  const { user } = useAuth();
   const [add, setAdd] = useState(false);
   const save = useMutation({
     mutationFn: ({ id, body }: { id?: string; body: any }) =>
@@ -93,9 +94,11 @@ export function SkuManager({
             </button>
           </form>
         ) : (
-          <button className="button" onClick={() => setAdd(true)}>
-            Add another variant
-          </button>
+          user?.role === "SELLER" && (
+            <button className="button" onClick={() => setAdd(true)}>
+              Add another variant
+            </button>
+          )
         )}
         <small className="muted">
           Use Inventory → Receive a SKU to add initial stock after creating a

@@ -1,0 +1,203 @@
+{
+  "executedAt": "2026-11-26T08:55:00.527Z",
+  "checks": 28,
+  "passed": 28,
+  "results": [
+    {
+      "role": "seller",
+      "path": "/portal",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "seller",
+      "path": "/portal/products",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "seller",
+      "path": "/portal/orders",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "seller",
+      "path": "/portal/inventory",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "seller",
+      "path": "/portal/returns",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "seller",
+      "path": "/portal/settlements",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "warehouse",
+      "path": "/portal",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "warehouse",
+      "path": "/portal/orders",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "warehouse",
+      "path": "/portal/inventory",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "warehouse",
+      "path": "/portal/returns",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "support",
+      "path": "/portal",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "support",
+      "path": "/portal/tickets",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "support",
+      "path": "/portal/returns",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "support",
+      "path": "/portal/disputes",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/products",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/orders",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/inventory",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/returns",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/tickets",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/disputes",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/settlements",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/sellers",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/users",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/promotions",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/categories",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/audit",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    },
+    {
+      "role": "admin",
+      "path": "/portal/health",
+      "passed": true,
+      "errors": [],
+      "apiFailures": []
+    }
+  ]
+}

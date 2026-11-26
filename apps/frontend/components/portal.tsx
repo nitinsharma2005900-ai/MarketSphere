@@ -50,6 +50,11 @@ const names: Record<string, string> = {
 export function Portal() {
   const { user, ready } = useAuth(),
     path = usePathname();
+  const profile = useQuery({
+    queryKey: ["seller-approval", user?.id],
+    queryFn: () => api("/auth/me"),
+    enabled: user?.role === "SELLER",
+  });
   if (!ready) return <Loading />;
   if (!user)
     return (
@@ -110,6 +115,21 @@ export function Portal() {
           <span className="avatar">{user.name[0]}</span>
         </div>
       </div>
+      {user.role === "SELLER" && profile.data?.data.seller && (
+        <div
+          className="panel"
+          style={{ padding: "12px 18px", marginTop: 18, fontSize: 14 }}
+        >
+          <span>Store approval: </span>
+          <Badge>{profile.data.data.seller.status}</Badge>
+          {profile.data.data.seller.status !== "APPROVED" && (
+            <p className="muted">
+              Your store is awaiting marketplace approval. Product publishing
+              becomes available after approval.
+            </p>
+          )}
+        </div>
+      )}
       {section === "products" ? (
         <Products />
       ) : section === "orders" ? (
